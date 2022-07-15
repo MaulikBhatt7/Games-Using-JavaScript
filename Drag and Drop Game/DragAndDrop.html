@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drag And Drop</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	
+	<style type="text/css">
+		i{
+			color: blue;
+			font-size: 50px
+		}
+		.dropTable{
+			font-size: 20px
+		}
+		.draggable{
+			display: flex;
+			cursor: move;
+			transition: opacity 0.2s;
+		}
+		.draggable:hover{
+			opacity: 0.5;
+		}
+		.draggable span{
+			pointer-events: none;
+		}
+		.droppable.droppable-hover{
+			border-width: 5px;
+			transform: scale(1.1);
+		}
+		.droppable.dropped{
+			border-style: solid;
+			color: white;
+		}
+		.droppable.dropped i{
+			pointer-events: none;
+		}
+		.draggable.dragged{
+			user-select: none;
+			opacity: 0.1;
+			cursor: default;
+		}
+		.draggable.dragged:hover{
+			opacity: 0.1;
+		}
+
+		.droppable.droppable-shake{
+			animation: shake 0.5s;
+			animation-iteration-count: 2s;
+		}
+	</style>
+</head>
+<body>
+	<table cellpadding="30px">
+		<tr>	
+			<td ondrop="drop(event)" ondragover="allowDrop(event)">
+				<i class="fa-solid fa-apple-whole draggable" draggable="true" id="a" 
+					ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)">
+					
+				</i></td>
+			<td><i class="fa-solid fa-sailboat draggable" draggable="true" id="b" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-cat draggable" draggable="true" id="c" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></td>
+			<td><i class="fa-solid fa-dog draggable" draggable="true" id="d" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-republican draggable" draggable="true" id="e" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-fish-fins draggable" draggable="true" id="f" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-glasses draggable" draggable="true" id="g" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-house draggable" draggable="true" id="h" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-ice-cream draggable" draggable="true" id="i" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-jar draggable" draggable="true" id="j" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-crown draggable" draggable="true" id="k" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></i></td>
+			<td><i class="fa-solid fa-leaf draggable" draggable="true" id="l" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-moon draggable" draggable="true" id="m" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			
+		</tr>
+		<tr>
+			<td><i class="fa-solid fa-n draggable" draggable="true" id="n" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-o draggable" draggable="true" id="o" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-pen draggable" draggable="true" id="p" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-q draggable" draggable="true" id="q" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-radio draggable" draggable="true" id="r" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-spoon draggable" draggable="true" id="s" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-ticket draggable" draggable="true" id="t" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-umbrella draggable" draggable="true" id="u" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-solid fa-van-shuttle draggable" draggable="true" id="v" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-brands fa-windows draggable" draggable="true" id="w" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-light fa-x draggable" draggable="true" id="x" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-brands fa-youtube draggable" draggable="true" id="y" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+			<td><i class="fa-light fa-z draggable" draggable="true" id="z" ondragstart="dragStart(event)"
+					ondragend="dragEnd(event)"></i></td>
+
+		</tr>
+	</table><br><br><br>
+
+	<table border="1" cellpadding="35px" cellspacing="25px" class="dropTable">
+		<tr>
+			<td class="droppable" data-draggable-id="a" 
+				ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)" 
+				>A</td>
+			<td class="droppable" data-draggable-id="b" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">B</td>
+			<td class="droppable" data-draggable-id="c" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">C</td>
+			<td class="droppable" data-draggable-id="d" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">D</td>
+			<td class="droppable" data-draggable-id="e" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">E</td>
+			<td class="droppable" data-draggable-id="f" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">F</td>
+			<td class="droppable" data-draggable-id="g" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">G</td>
+			<td class="droppable" data-draggable-id="h" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">H</td>
+			<td class="droppable" data-draggable-id="i" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">I</td>
+			<td class="droppable" data-draggable-id="j" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">J</td>
+			<td class="droppable" data-draggable-id="k" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">K</td>
+			<td class="droppable" data-draggable-id="l" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">L</td>
+			<td class="droppable" data-draggable-id="m" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">M</td>
+		</tr>
+
+		<tr>
+			<td class="droppable" data-draggable-id="n" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">N</td>
+			<td class="droppable" data-draggable-id="o" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">O</td>
+			<td class="droppable" data-draggable-id="p" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">P</td>
+			<td class="droppable" data-draggable-id="q" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">Q</td>
+			<td class="droppable" data-draggable-id="r" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">R</td>
+			<td class="droppable" data-draggable-id="s" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">S</td>
+			<td class="droppable" data-draggable-id="t" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">T</td>
+			<td class="droppable" data-draggable-id="u" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">U</td>
+			<td class="droppable" data-draggable-id="v" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">V</td>
+			<td class="droppable" data-draggable-id="w" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">W</td>
+			<td class="droppable" data-draggable-id="x" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">X</td>
+			<td class="droppable" data-draggable-id="y" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">Y</td>
+			<td class="droppable" data-draggable-id="z" ondrop="drop(event)" 
+				ondragover="allowDrop(event)"
+				ondragenter="dragEnter(event)"
+				ondragleave="dragLeave(event)">Z</td>
+		</tr>
+	</table>
+
+	<script type="text/javascript">
+	
+
+	function dragStart(event) {
+		event.dataTransfer.setData("text", event.target.id);
+	}
+
+	function dragEnter(event) {
+		if(!event.target.classList.contains("dropped")){
+			event.target.classList.add("droppable-hover");
+		}	
+	}
+
+	function dragLeave(event){
+		if(!event.target.classList.contains("dropped")){
+			event.target.classList.remove("droppable-hover");
+		}		
+	}
+
+	function dragEnd(event){
+		if(!event.target.classList.contains("dropped")){
+			event.preventDefault();
+		}	
+	}
+
+	function allowDrop(event) {
+  		event.preventDefault();
+	}
+
+	function drop(event){
+		event.preventDefault();
+		event.target.classList.remove("droppable-hover");
+		var draggableElementData = event.dataTransfer.getData("text");
+		var droppableElementData = event.target.getAttribute("data-draggable-id");
+		if(droppableElementData ===  draggableElementData){
+			event.target.classList.add("dropped");
+			audioRight.play();
+			var draggableElement = document.getElementById(draggableElementData);
+			event.target.style.backgroundColor = draggableElement.style.color;
+			draggableElement.classList.add("dragged");
+			draggableElement.setAttribute("draggable", "false");
+			event.target.insertAdjacentHTML("afterbegin", `<i class="fas fa-${draggableElementData}"></i>`)
+		}
+		else{
+			event.target.classList.add("droppable-shake");
+			audioWrong.play();
+		}
+	}
+
+	const audioRight=new Audio();
+	audioRight.src="rightMusic.wav";
+
+	const audioWrong=new Audio();
+	audioWrong.src="wrongMusic.wav";
+
+</script>
+</body>
+
+</html>
