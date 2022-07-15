@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Snake Game!</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<style type="text/css">
+	#imageOfSnake{
+		position: absolute;
+		top: 200px;
+		left: 500px;
+		width: 120px;
+		height: 120px;
+	}
+	#foodOfSnake{
+		color: red;
+		position: absolute;
+		top: 800px;
+		left: 500px;
+	}
+
+	.areaOfGame{
+		display: flex;
+		border: 10px solid blue;
+		margin-left: 400px;
+		margin-top: 100px;	
+		height: 600px;
+		width: 600px
+	}
+	.life{
+		margin-left: 700px;
+		margin: top: 50px;
+		font-size: 30px;
+	}
+	.text1{
+		color: red;
+	}
+	.text2{
+		color: green;
+	}
+</style>
+<body onload="changeLocationOfFood()" onkeydown="moveControl(event)">
+
+	<h1 style="color: blue; text-align: center;">Snake Game!</h1>
+	<div class="areaOfGame">
+		<table class="life" style="font-weight: bold;">
+		<tr class="text1">
+			<td>Life : </td>
+			<td id="lifeCount">3</td>
+		</tr>
+		<tr class="text2">
+			<td>Score</td>
+			<td> : </td>
+			<td id="score">0</td>
+		</tr>
+		
+	</table>
+		<div><img id="imageOfSnake" src="https://cdn2.vectorstock.com/i/thumb-large/12/76/pixel-snake-art-8-bit-objects-retro-game-assets-vector-23511276.jpg"></div>
+
+
+		<div><i class="fa-solid fa-apple-whole" id="foodOfSnake" style="font-size: 25px"></i></div>
+	</div>
+	
+</body>
+	<script src="SnakeGame.js"></script>
+</html>
+
