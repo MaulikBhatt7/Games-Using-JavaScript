@@ -7,6 +7,7 @@ var lifeCount=3,scoreCount=0;
 var imgGameOver = `<img style=margin:150px src="https://media.istockphoto.com/vectors/game-over-icon-for-ui-game-vector-id523895845?k=6&m=523895845&s=612x612&w=0&h=cDIBZSj6kvGiRHuST3MfWH-kqxtjOP7ititEMxKfPlM=">`
 var life=document.getElementById("lifeCount");
 var score=document.getElementById("score");
+var flagR=true,flagL=true,flagU=true;flagD=true;
 const audioRight=new Audio();
 	audioRight.src="rightMusic.wav";
 
@@ -16,7 +17,13 @@ function startGoingLeft(){
 	clearInterval(d);
 	clearInterval(u);
 	clearInterval(r);
+	if(flagL){
+		flagL=false;
+		flagR=true;
+		flagD=true;
+		flagU=true;
 	 l=setInterval(goingLeft,10);
+	}
 }
 
 function goingLeft(){
@@ -33,7 +40,14 @@ function startGoingRight(){
 	clearInterval(d);
 	clearInterval(l);
 	clearInterval(u);
-	r=setInterval(goingRight,10);
+	if(flagR){
+		flagR=false;
+		flagD=true;
+		flagL=true;
+		flagU=true;
+		r=setInterval(goingRight,10);
+	}
+	
 }
 
 function goingRight(){
@@ -50,7 +64,13 @@ function startGoingUp(){
 	clearInterval(d);
 	clearInterval(l);
 	clearInterval(r);
-	u=setInterval(goingUp,10);
+	if(flagU){
+		flagU=false;
+		flagR=true;
+		flagL=true;
+		flagD=true;
+		u=setInterval(goingUp,10);
+	}
 }
 
 function goingUp(){
@@ -67,7 +87,13 @@ function startGoingDown(){
 	clearInterval(u);
 	clearInterval(l);
 	clearInterval(r);
-	d=setInterval(goingDown,10);
+	if(flagD){
+		flagD=false;
+		flagR=true;
+		flagL=true;
+		flagU=true;
+		d=setInterval(goingDown,10);
+	}
 }
 
 function goingDown(){
@@ -137,6 +163,12 @@ function checkBoundry(){
 	}
 		life.innerHTML=lifeCount
 }
+
+
+
+
+
+
 
 
 
