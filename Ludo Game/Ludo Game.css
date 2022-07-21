@@ -63,5 +63,22 @@
 #greenLine1,#greenLine2,#greenLine3,#greenLine4,#greenLine5,#greenLine6{
 	background-color: green;
 }
+.baseSetUp{
+	width: 140px;
+	height: 140px;
+	background-color: white;
+	border-radius: 20px;
+	margin: auto;
+	margin-top: 23px;
+}
+.initialPosition{
+	width: 40px;
+	height: 40px;
+	background: silver;
+	border-radius: 50%;
+	margin: 15px;
+	float: left;
+}
+
 
 
