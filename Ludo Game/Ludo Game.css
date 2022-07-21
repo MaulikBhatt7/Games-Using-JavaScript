@@ -1,0 +1,67 @@
+.container{
+	width: 600px;
+	margin-top: 50px;: 
+}
+#player1, #player2, #player3, #player4{
+	height: 195px;
+	border: 5px solid black;
+
+}
+#player1{
+	background: blue;
+	border-top-left-radius: 30px 30px; 
+}
+#player2{
+	background: red;
+	border-top-right-radius: 30px 30px;
+}
+#player3{
+	background: yellow;
+	border-bottom-left-radius: 30px 30px;
+}
+#player4{
+	background: green;
+	border-bottom-right-radius: 30px 30px;
+}
+
+.rowOfTable{
+	height:  32px;
+	border: 1px solid black;
+}
+.rowOfTable2{
+	height:  47px;
+	border: 1px solid black;
+}
+.columnOfTable{
+	width:  40px;
+	border: 1px solid black;
+	background: red;
+}
+
+.col{
+	padding: 0px;
+}
+
+.winningBoard{
+	background: silver;
+	border: 2px solid black;
+	height: 144px;
+}
+.table{
+	margin: 0px;
+	font-size: 8px;
+}
+#blueLine1,#blueLine2,#blueLine3,#blueLine4,#blueLine5,#blueLine6{
+	background-color: blue;
+}
+#redLine1,#redLine2,#redLine3,#redLine4,#redLine5,#redLine6{
+	background-color: red;
+}
+#yellowLine1,#yellowLine2,#yellowLine3,#yellowLine4,#yellowLine5,#yellowLine6{
+	background-color: yellow;
+}
+#greenLine1,#greenLine2,#greenLine3,#greenLine4,#greenLine5,#greenLine6{
+	background-color: green;
+}
+
+
