@@ -84,6 +84,21 @@
 	margin: 15px;
 	float: left;
 }
+.blue{
+    background: blue !important;
+}
+
+.red{
+    background: red !important;
+}
+
+.green{
+    background: green !important;
+}
+
+.yellow{
+    background: yellow !important;
+}
 
 
 
