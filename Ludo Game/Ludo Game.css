@@ -1,11 +1,11 @@
 .container{
-	width: 600px;
-	margin-top: 50px;: 
+	width: 500px;
+	margin-top: 50px;
 }
 #player1, #player2, #player3, #player4{
-	height: 195px;
+	height: 194px;
 	border: 5px solid black;
-
+	width: 195PX;
 }
 #player1{
 	background: blue;
@@ -26,31 +26,33 @@
 
 .rowOfTable{
 	height:  32px;
-	border: 1px solid black;
-}
-.rowOfTable2{
-	height:  47px;
-	border: 1px solid black;
-}
-.columnOfTable{
-	width:  40px;
-	border: 1px solid black;
-	background: red;
+	border: 2px solid black;
 }
 
-.col{
+.columnOfTable{
+	width:  42px;
+	border: 2px solid black;
+}
+
+.col, .col-5{
 	padding: 0px;
 }
-
 .winningBoard{
 	background: silver;
 	border: 2px solid black;
-	height: 144px;
+	height: 98px;
+	margin: 0px;
 }
 .table{
 	margin: 0px;
 	font-size: 8px;
 }
+.table2{
+	font-size: 8px;
+	width: 195px;
+	border: 2px solid black;
+}
+
 #blueLine1,#blueLine2,#blueLine3,#blueLine4,#blueLine5,#blueLine6{
 	background-color: blue;
 }
