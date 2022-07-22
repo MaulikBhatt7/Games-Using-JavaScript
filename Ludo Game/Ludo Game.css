@@ -33,15 +33,16 @@
 	width:  42px;
 	border: 2px solid black;
 }
-.newclass{
-	
 
 .col, .col-5{
 	padding: 0px;
 }
 .winningBoard{
 	background: silver;
-	border: 2px solid black;
+	border-top: 49px solid red;
+	border-right: 55px solid green;
+	border-bottom: 49px solid yellow;
+	border-left: 55px solid blue;
 	height: 98px;
 	margin: 0px;
 }
@@ -83,6 +84,8 @@
 	margin: 15px;
 	float: left;
 }
+
+
 
 
 
