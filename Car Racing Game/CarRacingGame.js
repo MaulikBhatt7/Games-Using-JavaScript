@@ -1,8 +1,17 @@
 const score=document.querySelector('.score');
 const startGame=document.querySelector('.startGame');
 const gameArea=document.querySelector('.gameArea');
-const audio = new Audio();
-	audio.src="Lose Music.wav";
+const audioLose = new Audio();
+	// audioLose.src="Lose Music 2.wav";
+const audioBackground = new Audio();
+	// audioBackground.src="background.mp3";
+var finalScore;
+var aRect,bRect,i;
+
+const body=document.getElementById("body");
+const bodyDetails = body.getBoundingClientRect();
+console.log(bodyDetails.height);
+
 
 startGame.addEventListener('click', start);
 
@@ -25,6 +34,7 @@ function keyUp(e){
 function isColide(a,b){
 	aRect = a.getBoundingClientRect();
 	bRect = b.getBoundingClientRect();
+	console.log(bRect.height);
 
 	return !((aRect.bottom < bRect.top) || (aRect.top > bRect.bottom) || 
 				(aRect.right < bRect.left) || (aRect.left > bRect.right));
@@ -35,8 +45,8 @@ function moveLine(){
 	let lines=document.querySelectorAll(".lines");
 	lines.forEach(element => {
 
-		if(element.y >= 625){
-			element.y-=750;
+		if(element.y >= bodyDetails.height-125){
+			element.y-=bodyDetails.height;
 		}
 
 		element.y += player.speed;
@@ -51,13 +61,14 @@ function moveEnemyCar(car){
 
 		if(isColide(car,element)){
 			// console.log("Game Over");
-			audio.play();
+			audioBackground.pause()		
+			audioLose.play();
 			endGame();
 			startGame.innerHTML = "Game Over! <br> Your final score is "+player.score+"<br> Click here to restart the game";
 		}
 
-		if(element.y >= 660){
-			element.y = -300;
+		if(element.y >= bodyDetails.height-90){
+			element.y -= bodyDetails.height+170;
 			element.style.left = Math.floor(Math.random()*400)+"px";
 		}
 
@@ -105,16 +116,20 @@ function start(){
 	startGame.classList.add("hide");
 	gameArea.innerHTML="";
 
+	audioBackground.play();
+
 	player.start=true;
 	player.score=0;
 	window.requestAnimationFrame(gamePlay);
+	var noOfLines=parseInt(bodyDetails.height/149);
 
-	for(i=0;i<5;i++){
+	for(i=0;i<noOfLines;i++){
 		let roadLine = document.createElement("div");
 		roadLine.setAttribute("class","lines");
 		roadLine.y=(i*150);
 		roadLine.style.top = roadLine.y+"px";
 		gameArea.appendChild(roadLine);
+		console.log(i);
 	}
 	
 
@@ -127,13 +142,17 @@ function start(){
 	player.x=car.offsetLeft;
 
 	// console.log(player.x,player.y);
+	var noOfCars=3
+	if(bodyDetails.height>1000){
+		noOfCars=4
+	}
 
-	for(i=0;i<3;i++){
+	for(i=0;i<noOfCars;i++){
 		let enemyCar = document.createElement("div");
 		enemyCar.setAttribute("class","enemyCar");
 		enemyCar.y=((i+1)*350)*-1;
 		enemyCar.style.top = enemyCar.y+"px";
-		enemyCar.style.backgroundColor=randomColor();
+		// enemyCar.style.backgroundColor=randomColor();
 		enemyCar.style.left = Math.floor(Math.random()*350)+"px";
 		gameArea.appendChild(enemyCar);
 	}
